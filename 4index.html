@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUPER EDUCATIONAL WEBSITE</title>
+  <link rel="preconnect" href="https://buildnow-gg.io">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: system-ui, -apple-system, sans-serif;
+      overflow-y: auto;
+      min-height: 100vh;
+    }
+    .page-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      gap: 24px;
+    }
+    .game-wrapper {
+      width: 100%;
+      max-width: 960px;
+      background: #1e1e1e;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    }
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: #252525;
+    }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    .description-box {
+      width: 100%;
+      max-width: 960px;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      line-height: 1.6;
+      color: #cccccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-container">
+    <div class="game-wrapper">
+      <div class="iframe-container" id="game-box">
+        <iframe 
+          id="game-frame"
+          src="YOUR_GAME_URL_HERE" 
+          scrolling="yes"
+          allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write"
+          sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms"
+          loading="eager">
+        </iframe>
+      </div>
+      <div class="controls">
+        <span>Game Title</span>
+        <button onclick="goFullscreen()">Fullscreen</button>
+      </div>
+    </div>
+
+    <div class="description-box">
+      <h2>How to Play</h2>
+      <p>Use your mouse or scrollbar to move up and down the page. Arrow keys and Spacebar are locked to the game.</p>
+    </div>
+  </div>
+
+  <script>
+    // Prevents arrow keys and spacebar from scrolling the outer page while playing
+    window.addEventListener("keydown", function(e) {
+      if (["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+      }
+    }, false);
+
+    function goFullscreen() {
+      const gameBox = document.getElementById("game-box");
+      if (gameBox.requestFullscreen) {
+        gameBox.requestFullscreen();
+      } else if (gameBox.webkitRequestFullscreen) {
+        gameBox.webkitRequestFullscreen();
+      }
+    }
+  </script>
+
+</body>
+</html>
